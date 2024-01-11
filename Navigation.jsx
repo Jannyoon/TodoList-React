@@ -1,8 +1,8 @@
-export default function Navigation(){
+export default function Navigation({onClick}){
   return (
     <div className="navigation">
       <nav className="buttonBar">
-        <button>다크컨텍스트용</button>
+        <button onClick={()=>onClick()}>다크컨텍스트용</button>
         <div>
           <button>All</button>
           <button>Active</button>

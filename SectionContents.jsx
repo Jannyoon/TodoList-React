@@ -1,5 +1,8 @@
 
 import { useState } from "react";
+import { dataBases } from "./data/TodoData";
+import ListItem from "./ListItem";
+import './todoCss.css';
 
 export default function SectionContents(){
   const [text, setText] = useState('');
@@ -7,13 +10,30 @@ export default function SectionContents(){
 
   function handlePushClick(){
     let num = todoList[todoList.length-1].id;
-    setTodoList([...todoList, {
-      id : num+1,
-      content : text,
-      state : false
-    }])
+    setTodoList([...todoList, 
+      {
+        id : num+1,
+        content : text,
+        state : false
+      }
+    ])
     setText('');
   }
+
+  /*
+  function handleChangeCheckbox(id){
+    setTodoList(todoList.map((item)=>{
+      if (item.id===id){
+        return ({
+          ...item, 
+          state : !(item.state)
+        })
+      }
+      else return item;
+    }))
+  }
+  */
+
 
   function handleDelete(id){
     setTodoList(todoList.filter(item => item.id!==id));
@@ -22,15 +42,14 @@ export default function SectionContents(){
   return (
     <>
       <section className="listContents">
-        <ul>
-          {todoList.map((data)=>(
-            <li key={data.id} id={data.id} className="liData">
-              <div>
-                <input type="checkbox" name="listCheck"/>
-                <span>{data.content}</span>
-              </div>
-              <button onClick={()=>handleDelete(data.id)}>trashBin</button>
-            </li>
+        <ul> 
+          {todoList.map(data=>(
+            <div key={data.id}>
+              <ListItem 
+                content={data.content}
+                onDelete={()=>handleDelete(data.id)}
+              />            
+            </div>
             )
           )}
         </ul>
@@ -39,7 +58,7 @@ export default function SectionContents(){
         <input 
           value={text}
           type="text" 
-          className="myinput" 
+          className="myinputArea" 
           onChange={e=>setText(e.target.value)}
         />
         <button onClick={handlePushClick}>Add</button>
@@ -47,16 +66,3 @@ export default function SectionContents(){
     </>
   )
 }
-
-let dataBases = [
-  {
-    id : 0,
-    content : '강의 보기',
-    state : false
-  },
-  {
-    id : 1,
-    content : '카페 가기',
-    state : false
-  }
-]
