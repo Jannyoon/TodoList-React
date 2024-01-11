@@ -1,0 +1,50 @@
+.body {
+  width : 100%;
+  height : 100%;
+}
+
+.main {
+  width : 40%;
+  height : 80%;
+  border : 1px solid black;
+}
+
+.navigation{
+  border : 1px solid black;
+}
+
+.buttonBar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.listContents{
+  width : 100%;
+  height : 300px;
+  border : 1px solid black;
+  overflow-y: scroll;
+}
+
+.myinput{
+  width : 100%;
+  height : 100%;
+  border : 1px solid black;
+}
+
+.myinput input{
+  width : 300px;
+}
+
+ul {
+  padding-left : 0;
+}
+
+li{
+  list-style: none;
+}
+
+.liData {
+  display: flex;
+  justify-content: space-between;
+}
+
