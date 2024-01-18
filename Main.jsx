@@ -1,6 +1,6 @@
 import Navigation from './Navigation.jsx';
-import SectionContents from './SectionContents.jsx';
 import { useState } from 'react';
+
 
 export default function Main(){
   const [day, setDay] = useState("day");
@@ -17,11 +17,11 @@ export default function Main(){
     }
   }
 
+
   return (
     <>
       <div className={`main ${day}`}>
-        <Navigation onClick={handleClick}/>
-        <SectionContents/>
+        <Navigation onClick={handleClick} day={day}/>
       </div>
     </>
   )

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import './todoCss.css';
+import { FaTrashAlt } from "react-icons/fa";
 
-export default function ListItem({content, onChange, onDelete, listchecked}){
+export default function ListItem({content, onChange, onDelete, listchecked, day}){
   const [ischecked, setChecked] = useState('unchecked');
 
   function handleClick(){
@@ -24,8 +25,8 @@ export default function ListItem({content, onChange, onDelete, listchecked}){
         }}>
           {content}
         </span>
-      </div>
-      <button onClick={onDelete}>trashBin</button>
+      </div>  
+      <button onClick={onDelete} className="Button"><FaTrashAlt className={`trashBin ${day}`}/></button>
     </li>
   )
 }

@@ -5,10 +5,18 @@ import ListItem from "./ListItem";
 import './todoCss.css';
 
 
-export default function SectionContents(){
+export default function SectionContents({id, day}){
   const db = JSON.parse(localStorage.getItem("dataBases"));
   const [text, setText] = useState('');
   const [todoList, setTodoList] = useState(db);
+  let showTodoList = todoList.map((item)=>item);
+
+  if (id===2){
+    showTodoList = showTodoList.filter((item)=>!item.state);
+  }
+  else if (id===3){
+    showTodoList = showTodoList.filter((item)=>item.state);
+  }
 
   //로컬스토리지에 데이터를 저장한다
   useEffect(()=>{
@@ -53,13 +61,14 @@ export default function SectionContents(){
     <>
       <section className="listContents">
         <ul> 
-          {todoList.map(data=>(
+          {showTodoList.map(data=>(
             <div key={data.id}>
               <ListItem 
                 content={data.content}
                 onChange = {()=>handleChangeCheckbox(data.id)}
                 onDelete={()=>handleDelete(data.id)}
                 listchecked={data.state}
+                day = {day}
                 
               />            
             </div>

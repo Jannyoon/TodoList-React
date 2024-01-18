@@ -2,7 +2,9 @@
   width : 100%;
   height : 100%;
 }
-
+button {
+  cursor : pointer;
+}
 .main {
   width : 40%;
   min-width: 300px;
@@ -29,11 +31,18 @@
   border : 1px solid black;
 }
 
-.buttonBar{
+.buttonBar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  
 }
 
+.modeButton{
+  display: flex;
+  align-items: center;
+}
 .listContents{
   width : 100%;
   height : 300px;
@@ -79,4 +88,18 @@ li {
 
 .unchecked{
   text-decoration-line : none;
+}
+
+.Button{
+  border: none;
+  background-color: transparent;
+  cursor : pointer;
+  transition : transform ease-in 200ms;
+}
+.Button:hover{
+  transform: scale(1.2);
+}
+
+.trashBin:hover{
+  color : red
 }
