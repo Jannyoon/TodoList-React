@@ -1,12 +1,13 @@
 import { useState } from "react";
 import './todoCss.css';
 
-export default function ListItem({content, onDelete}){
+export default function ListItem({content, onChange, onDelete, listchecked}){
   const [ischecked, setChecked] = useState('unchecked');
 
   function handleClick(){
     if (ischecked==='checked') setChecked('unchecked');
     else setChecked('checked');
+    onChange();
   }
 
   return (
@@ -16,9 +17,10 @@ export default function ListItem({content, onDelete}){
           name="listCheck" 
           className="listCheck"
           onClick={handleClick}
+          checked={listchecked}
         />
         <span  style={{
-          textDecorationLine : ischecked==="checked"?"line-through":"none"
+          textDecorationLine : listchecked ?"line-through":"none"
         }}>
           {content}
         </span>

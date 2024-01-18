@@ -1,12 +1,22 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dataBases } from "./data/TodoData";
 import ListItem from "./ListItem";
 import './todoCss.css';
 
+
 export default function SectionContents(){
+  const db = JSON.parse(localStorage.getItem("dataBases"));
   const [text, setText] = useState('');
-  const [todoList, setTodoList] = useState(dataBases);
+  const [todoList, setTodoList] = useState(db);
+
+  //로컬스토리지에 데이터를 저장한다
+  useEffect(()=>{
+    localStorage.setItem("dataBases", JSON.stringify(todoList)); 
+    console.log(localStorage); //디버깅용
+  }, [todoList])
+
+
 
   function handlePushClick(){
     let num = todoList[todoList.length-1].id;
@@ -20,7 +30,7 @@ export default function SectionContents(){
     setText('');
   }
 
-  /*
+  
   function handleChangeCheckbox(id){
     setTodoList(todoList.map((item)=>{
       if (item.id===id){
@@ -32,7 +42,7 @@ export default function SectionContents(){
       else return item;
     }))
   }
-  */
+  
 
 
   function handleDelete(id){
@@ -47,7 +57,10 @@ export default function SectionContents(){
             <div key={data.id}>
               <ListItem 
                 content={data.content}
+                onChange = {()=>handleChangeCheckbox(data.id)}
                 onDelete={()=>handleDelete(data.id)}
+                listchecked={data.state}
+                
               />            
             </div>
             )
