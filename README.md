@@ -17,6 +17,7 @@ https://lighthearted-ganache-006218.netlify.app
 
 
 <hr>
+
 ## 개선해야 할 부분 
 1) 아이템을 Add 할 때 버튼을 눌러야만 아이템이 추가돼서 불편함<br>
 =>Enter를 눌렀을 때도 Add가 될 수 있도록 **form 태그**를 이용할 것
