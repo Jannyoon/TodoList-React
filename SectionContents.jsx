@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { dataBases } from "./data/TodoData";
 import ListItem from "./ListItem";
 import './todoCss.css';
-
+//localStorage.setItem("dataBases", JSON.stringify(dataBases)); 
 
 export default function SectionContents({id, day}){
-  const db = JSON.parse(localStorage.getItem("dataBases"));
+  const db = JSON.parse(localStorage.getItem("dataBases")) ?? [];
   const [text, setText] = useState('');
   const [todoList, setTodoList] = useState(db);
+
+
   let showTodoList = todoList.map((item)=>item);
 
   if (id===2){
@@ -27,7 +29,9 @@ export default function SectionContents({id, day}){
 
 
   function handlePushClick(){
-    let num = todoList[todoList.length-1].id;
+    let num = 0;
+    if (todoList.length>0) num = todoList[todoList.length-1].id;
+    
     setTodoList([...todoList, 
       {
         id : num+1,
@@ -40,7 +44,7 @@ export default function SectionContents({id, day}){
 
   
   function handleChangeCheckbox(id){
-    setTodoList(todoList.map((item)=>{
+    setTodoList(todoList.length>0 && todoList.map((item)=>{
       if (item.id===id){
         return ({
           ...item, 
@@ -61,7 +65,7 @@ export default function SectionContents({id, day}){
     <>
       <section className="listContents">
         <ul> 
-          {showTodoList.map(data=>(
+          {showTodoList.length>0 && showTodoList.map(data=>(
             <div key={data.id}>
               <ListItem 
                 content={data.content}
