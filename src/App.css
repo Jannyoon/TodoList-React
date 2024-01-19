@@ -1,0 +1,48 @@
+.container {
+  margin : 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align : center;
+
+}
+
+.result {
+  border : 2px solid thistle;
+  border-radius : 5px;
+  width : 11rem;
+  margin : 0 auto;
+}
+
+.child {
+  margin : 0 auto;
+}
+.numContainer {  
+  padding : 3rem;
+
+  width : 11rem;
+  border : 2px solid yellowgreen;
+  border-radius : 15px;
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  text-align : center;
+}
+
+.number {
+  font-size : 3rem;
+}
+
+.button {
+  font-size : 30px;
+}
+
+.button:hover{
+  cursor : pointer;
+}
+
+.numContainer:hover{
+  background-color: beige;
+}
+
