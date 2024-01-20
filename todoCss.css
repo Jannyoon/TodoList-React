@@ -10,6 +10,7 @@ button {
   min-width: 300px;
   height : 80%;
   border : 1px solid black;
+  margin : auto;
 }
 
 .item {
@@ -48,6 +49,9 @@ button {
   height : 300px;
   border : 1px solid black;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .myinput{
@@ -100,6 +104,6 @@ li {
   transform: scale(1.2);
 }
 
-.trashBin:hover{
+.icon:hover{
   color : red
 }

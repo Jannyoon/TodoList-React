@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { dataBases } from "./data/TodoData";
 import ListItem from "./ListItem";
+import {v4 as uuidv4} from "uuid";
 import './todoCss.css';
 //localStorage.setItem("dataBases", JSON.stringify(dataBases)); 
 
@@ -28,14 +29,14 @@ export default function SectionContents({id, day}){
 
 
 
-  function handlePushClick(){
-    let num = 0;
-    if (todoList.length>0) num = todoList[todoList.length-1].id;
-    
+  function handleSubmit(e){
+    e.preventDefault();
+    let num = uuidv4();
+    if (text.trim()==='') return;
     setTodoList([...todoList, 
       {
         id : num+1,
-        content : text,
+        content : text.trim(),
         state : false
       }
     ])
@@ -61,6 +62,10 @@ export default function SectionContents({id, day}){
     setTodoList(todoList.filter(item => item.id!==id));
   }
 
+  function handleClean(){
+    setTodoList(todoList.filter(item => !item.state))
+  }
+
   return (
     <>
       <section className="listContents">
@@ -68,6 +73,7 @@ export default function SectionContents({id, day}){
           {showTodoList.length>0 && showTodoList.map(data=>(
             <div key={data.id}>
               <ListItem 
+                id = {data.id}
                 content={data.content}
                 onChange = {()=>handleChangeCheckbox(data.id)}
                 onDelete={()=>handleDelete(data.id)}
@@ -79,16 +85,18 @@ export default function SectionContents({id, day}){
             )
           )}
         </ul>
+        {id===3 && <button onClick={handleClean}>Clean</button>}
       </section> 
-      <div className="myinput">
+      <form className="myinput" onSubmit={handleSubmit}>
         <input 
           value={text}
+          placeholder="Add To Do"
           type="text" 
           className="myinputArea" 
           onChange={e=>setText(e.target.value)}
         />
-        <button onClick={handlePushClick}>Add</button>
-      </div> 
+        <button onClick={handleSubmit}>Add</button>
+      </form> 
     </>
   )
 }

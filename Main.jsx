@@ -1,27 +1,31 @@
+import { useState, useEffect } from 'react';
 import Navigation from './Navigation.jsx';
-import { useState } from 'react';
-
 
 export default function Main(){
-  const [day, setDay] = useState("day");
-  
+  const localDay = localStorage.getItem("nowDay") ?? "day"; //초기값은 day다
+  const [nowday, setNowDay] = useState(localDay);
+  useEffect(()=>{
+    localStorage.setItem("nowDay", nowday);
+  },[nowday])
+
   function handleClick(){
-    console.log(day);
-    if (day==="day"){
+    console.log(nowday);
+    if (nowday==="day"){
       console.log('다음은 night');
-      setDay("night");
+      setNowDay("night");
     }
     else{
       console.log('다음은 day');
-      setDay("day");
+      setNowDay("day");
     }
+
   }
 
 
   return (
     <>
-      <div className={`main ${day}`}>
-        <Navigation onClick={handleClick} day={day}/>
+      <div className={`main ${nowday}`}>
+        <Navigation onClick={handleClick} day={nowday}/>
       </div>
     </>
   )
