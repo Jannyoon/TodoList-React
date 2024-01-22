@@ -16,6 +16,10 @@ https://lighthearted-ganache-006218.netlify.app
 - 빈 칸 or 공백문자열 삭제 후 To do list 추가
 - uuidv4를 통해 고유 id 저장
 
+## 2024.01.22 코드 수정
+- 낮 모드, 밤 모드 props 전달 => useContext 이용하는 것으로 코드 수정
+
+  
 <hr>
 
 ## 실행 이미지
@@ -33,8 +37,8 @@ https://lighthearted-ganache-006218.netlify.app
 ~~2) 아무것도 입력하지 않았을 때, 또는 space만 입력되었을 때는 할 일이 추가되지 않도록 개선할 것.<br>
 =>text.trim() 이용~~ **=>2024.01.20 update**
 
-3) useContext 구현 연습 필요.<br>
+~~3) useContext 구현 연습 필요.<br>
 =>useContext를 사용하면 props drilling을 해결할 수 있을 것.<br>
-다음 프로젝트에선 useContext를 적극적으로 사용해볼 예정
+다음 프로젝트에선 useContext를 적극적으로 사용해볼 예정~~ **=>2024.01.22 update**
 
 ~~4) 낮, 밤 모드도 localStorage에 저장되면 좋을 것 같음~~ **=>2024.01.20 update**
