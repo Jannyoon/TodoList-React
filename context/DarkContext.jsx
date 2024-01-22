@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const DarkContext = createContext("main");
+export const DarkContext = createContext("day");

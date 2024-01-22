@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navigation from './Navigation.jsx';
+import { DarkContext } from './context/DarkContext.jsx';
 
 export default function Main(){
   const localDay = localStorage.getItem("nowDay") ?? "day"; //초기값은 day다
@@ -24,9 +25,11 @@ export default function Main(){
 
   return (
     <>
-      <div className={`main ${nowday}`}>
-        <Navigation onClick={handleClick} day={nowday}/>
-      </div>
+      <DarkContext.Provider value={nowday}>
+        <div className={`main ${nowday}`}>
+          <Navigation onClick={handleClick}/>
+        </div>
+      </DarkContext.Provider>
     </>
   )
 }

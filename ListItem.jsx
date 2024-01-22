@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DarkContext } from "./context/DarkContext";
 import './todoCss.css';
+
 import { FaTrashAlt } from "react-icons/fa";
 
-export default function ListItem({id, content, onChange, onDelete, onEdit, listchecked, day}){
+export default function ListItem({id, content, onChange, onDelete, listchecked}){
   const [ischecked, setChecked] = useState('unchecked');
+  const day = useContext(DarkContext);
 
   function handleClick(){
     if (ischecked==='checked') setChecked('unchecked');

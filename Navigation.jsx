@@ -1,11 +1,13 @@
 import SectionContents from './SectionContents.jsx';
+import { useContext } from 'react';
+import { DarkContext } from './context/DarkContext.jsx';
 import { CiDark } from "react-icons/ci";
 import { IoMdSunny } from "react-icons/io";
 import { useState } from 'react';
 
-export default function Navigation({onClick, day}){
+export default function Navigation({onClick}){
   const [buttonKey, setButtonKey] = useState(0);
-
+  const day = useContext(DarkContext);
   function handleChangeKey(num){
     setButtonKey(num);
   }
@@ -25,7 +27,7 @@ export default function Navigation({onClick, day}){
           <button onClick={()=>handleChangeKey(3)}>Completed</button>
         </div>
       </nav>
-      <SectionContents key={buttonKey} id={buttonKey} day={day}/>
+      <SectionContents key={buttonKey} id={buttonKey}/>
     </div>
   )
 }

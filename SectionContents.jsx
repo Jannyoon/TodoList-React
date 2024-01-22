@@ -77,9 +77,7 @@ export default function SectionContents({id, day}){
                 content={data.content}
                 onChange = {()=>handleChangeCheckbox(data.id)}
                 onDelete={()=>handleDelete(data.id)}
-                listchecked={data.state}
-                day = {day}
-                
+                listchecked={data.state}      
               />            
             </div>
             )
